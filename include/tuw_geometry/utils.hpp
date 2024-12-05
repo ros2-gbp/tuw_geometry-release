@@ -171,7 +171,7 @@ double & QuaternionToPitch(const Quaternion & q, double & pitch)
   // pitch (y-axis rotation)
   double sinp = +2.0 * (q.w * q.y - q.z * q.x);
   if (fabs(sinp) >= 1) {
-    pitch = copysign(M_PI / 2, sinp);   // use 90 degrees if out of range
+    pitch = copysign(M_PI / 2, sinp);  // use 90 degrees if out of range
   } else {
     pitch = asin(sinp);
   }
