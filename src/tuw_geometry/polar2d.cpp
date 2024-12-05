@@ -1,13 +1,14 @@
-#include <tuw_geometry/polar2d.hpp>
-
 #include <memory>
+#include <tuw_geometry/polar2d.hpp>
 
 using namespace tuw;
 
 Polar2D::Polar2D()
 : Point2D(0, 0) {}
 Polar2D::Polar2D(const Point2D & p)
-: Point2D(atan2(p.y(), p.x()), sqrt(p.x() * p.x() + p.y() * p.y()), 1) {}
+: Point2D(atan2(p.y(), p.x()), sqrt(p.x() * p.x() + p.y() * p.y()), 1)
+{
+}
 Polar2D::Polar2D(double alpha, double rho)
 : Point2D(alpha, rho) {}
 Polar2D::Polar2D(double alpha, double rho, double h)

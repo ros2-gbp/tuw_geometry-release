@@ -4,13 +4,21 @@ using namespace tuw;
 Pose2D::Pose2D()
 : position_(), orientation_(0) {}
 Pose2D::Pose2D(const Point2D & p, double orientation_)
-: position_(p), orientation_(orientation_), cossin_uptodate_(false) {}
+: position_(p), orientation_(orientation_), cossin_uptodate_(false)
+{
+}
 Pose2D::Pose2D(const Pose2D & p)
-: position_(p.position_), orientation_(p.orientation_), cossin_uptodate_(false) {}
+: position_(p.position_), orientation_(p.orientation_), cossin_uptodate_(false)
+{
+}
 Pose2D::Pose2D(double x, double y, double orientation_)
-: position_(x, y), orientation_(orientation_), cossin_uptodate_(false) {}
+: position_(x, y), orientation_(orientation_), cossin_uptodate_(false)
+{
+}
 Pose2D::Pose2D(const cv::Vec<double, 3> & s)
-: position_(s(0), s(1)), orientation_(s(2)), cossin_uptodate_(false) {}
+: position_(s(0), s(1)), orientation_(s(2)), cossin_uptodate_(false)
+{
+}
 
 /** set the pose
   * @param x
