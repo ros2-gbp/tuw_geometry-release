@@ -12,7 +12,9 @@ Point2D::Point2D(double x, double y)
 Point2D::Point2D(double x, double y, double h)
 : cv::Vec<double, 3>(x, y, h) {}
 Point2D::Point2D(const Polar2D & p)
-: cv::Vec<double, 3>(p.rho() * cos(p.alpha()), p.rho() * sin(p.alpha()), 1) {}
+: cv::Vec<double, 3>(p.rho() * cos(p.alpha()), p.rho() * sin(p.alpha()), 1)
+{
+}
 
 /**
  * sets values
@@ -23,7 +25,7 @@ Point2D & Point2D::set(const Point2D & p)
 {
   this->val[0] = p.x(), this->val[1] = p.y();
   return *this;
-}/**
+} /**
  * sets values
  * @param x
  * @param y
@@ -121,6 +123,15 @@ double Point2D::distanceTo(const Point2D & p) const
   return sqrt(dx * dx + dy * dy);
 }
 /**
+ * returns the distance to an other point
+ * @return disance
+ **/
+double Point2D::distanceTo(double x, double y) const
+{
+  double dx = x - this->val[0], dy = y - this->val[1];
+  return sqrt(dx * dx + dy * dy);
+}
+/**
  * returns a cv::Point_<double> reference
  * @return cv
  **/
@@ -132,10 +143,37 @@ const cv::Point_<double> & Point2D::cv() const
  * returns a cv::Point_<double> reference
  * @return cv
  **/
-cv::Point_<double> & Point2D::cv()
+cv::Point_<double> & Point2D::cv() {return reinterpret_cast<cv::Point_<double> &>(*this);}
+/**
+ * copy to cv::Point
+ * @param des
+ * @return cv::Point to des reference
+ **/
+cv::Point & Point2D::to(cv::Point & des) const
 {
-  return reinterpret_cast<cv::Point_<double> &>(*this);
+  des.x = this->val[0], des.y = this->val[1];
+  return des;
 }
+/**
+ * copy to cv::Point
+ * @param des
+ * @return cv::Point to des reference
+ **/
+cv::Point & Point2D::to(cv::Point & des)
+{
+  des.x = this->val[0], des.y = this->val[1];
+  return des;
+}
+/**
+ * returns a cv::Point reference
+ * @return cv
+ **/
+cv::Point Point2D::p() const {return cv::Point(this->val[0], this->val[1]);}
+/**
+ * returns a cv::Point reference
+ * @return cv
+ **/
+cv::Point Point2D::p() {return cv::Point(this->val[0], this->val[1]);}
 /**
  * angle form origin to point (alpha in polar space)
  * @see radius

@@ -18,8 +18,8 @@ using SampleConstPtr = std::shared_ptr<Sample<T> const>;
 template<class T>
 class Sample : public T
 {
-  double weight_;      /// weight
-  unsigned int idx_;   /// index (for debugging)
+  double weight_;     /// weight
+  unsigned int idx_;  /// index (for debugging)
 
 public:
   Sample()
@@ -41,64 +41,37 @@ public:
    * @param p
    * @param weight
    **/
-  void set(const T & o, double weight = 0)
-  {
-    T::set(o), weight_ = weight;
-  }
+  void set(const T & o, double weight = 0) {T::set(o), weight_ = weight;}
 
   /**  set sample
    * @param s
    **/
-  void set(const T & s)
-  {
-    set(s, s.weight_);
-  }
+  void set(const T & s) {set(s, s.weight_);}
 
   /**  set sample
    * @param s
    **/
 
-  void set(const SamplePtr<T> & s)
-  {
-    set(*s, s->weight_);
-  }
+  void set(const SamplePtr<T> & s) {set(*s, s->weight_);}
 
   /**  get
    * @return object
    **/
-  const T & get() const
-  {
-    return *this;
-  }
+  const T & get() const {return *this;}
 
   /**  get
    * @return object
    **/
-  T & get()
-  {
-    return *this;
-  }
+  T & get() {return *this;}
 
   /** @return idx  **/
-  const unsigned int & idx() const
-  {
-    return idx_;
-  }
+  const unsigned int & idx() const {return idx_;}
   /** @return idx  **/
-  unsigned int & idx()
-  {
-    return idx_;
-  }
+  unsigned int & idx() {return idx_;}
   /** @return weight  **/
-  const double & weight() const
-  {
-    return weight_;
-  }
+  const double & weight() const {return weight_;}
   /** @return weight  **/
-  double & weight()
-  {
-    return weight_;
-  }
+  double & weight() {return weight_;}
   /** Stream extraction
    * @param os outputstream
    * @param o object
@@ -125,5 +98,5 @@ class Pose2D;
 using SamplePose2D = Sample<Pose2D>;
 using SamplePose2DPtr = std::shared_ptr<SamplePose2D>;
 using SamplePose2DConstPtr = std::shared_ptr<SamplePose2D const>;
-}
-#endif // TUW_GEOMETRY__SAMPLE_HPP
+}  // namespace tuw
+#endif  // TUW_GEOMETRY__SAMPLE_HPP

@@ -1,10 +1,9 @@
 #ifndef TUW_GEOMETRY__POSE2D_HPP
 #define TUW_GEOMETRY__POSE2D_HPP
 
-#include <tuw_geometry/point2d.hpp>
-
 #include <memory>
 #include <opencv2/core/core.hpp>
+#include <tuw_geometry/point2d.hpp>
 namespace tuw
 {
 class Pose2D;
@@ -20,7 +19,7 @@ class Pose2D
 protected:
   Point2D position_;                    /// position
   double orientation_;                  /// rotation in rad
-  mutable double costheta_, sintheta_;   // precomputed cos() & sin() of theta.
+  mutable double costheta_, sintheta_;  // precomputed cos() & sin() of theta.
   mutable bool cossin_uptodate_;
 
   /**

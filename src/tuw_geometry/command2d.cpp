@@ -20,7 +20,6 @@ const double & Command2D::w() const {return this->val[1];}
 
 void Command2D::set(double v, double w) {this->val[0] = v, this->val[1] = w;}
 
-
 std::ostream & operator<<(std::ostream & os, const tuw::Command2D & o)
 {
   os << "[" << o.v() << ", " << o.w() << "]";
