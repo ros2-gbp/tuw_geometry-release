@@ -3,12 +3,18 @@
 using namespace tuw;
 LineSegment2D::LineSegment2D() {}
 LineSegment2D::LineSegment2D(const LineSegment2D & l)
-: Line2D(l.line()), p0_(l.p0()), p1_(l.p1()) {}
+: Line2D(l.line()), p0_(l.p0()), p1_(l.p1())
+{
+}
 LineSegment2D::LineSegment2D(const Point2D & p0, const Point2D & p1)
-: Line2D(p0, p1, true), p0_(p0), p1_(p1) {}
+: Line2D(p0, p1, true), p0_(p0), p1_(p1)
+{
+}
 LineSegment2D::LineSegment2D(
   const double & x0, const double & y0, const double & x1, const double & y1)
-: Line2D(x0, y0, x1, y1, true), p0_(x0, y0), p1_(x1, y1) {}
+: Line2D(x0, y0, x1, y1, true), p0_(x0, y0), p1_(x1, y1)
+{
+}
 const double & LineSegment2D::x0() const {return p0_.x();}
 const double & LineSegment2D::y0() const {return p0_.y();}
 const double & LineSegment2D::x1() const {return p1_.x();}
