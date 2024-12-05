@@ -1,13 +1,12 @@
 #ifndef TUW_GEOMETRY__POLAR2D_HPP
 #define TUW_GEOMETRY__POLAR2D_HPP
 
-#include <tuw_geometry/point2d.hpp>
-
 #include <memory>
+#include <tuw_geometry/point2d.hpp>
 
 namespace tuw
 {
-class Polar2D;   /// Prototype
+class Polar2D;  /// Prototype
 using Polar2DPtr = std::shared_ptr<Polar2D>;
 using Polar2DConstPtr = std::shared_ptr<Polar2D const>;
 
@@ -53,6 +52,9 @@ private:
   using Point2D::x;
   using Point2D::y;
 };
+using Polars2D = std::vector<Polar2D>;
+using Polars2DPtr = std::shared_ptr<Polars2D>;
+using Polars2DConstPtr = std::shared_ptr<Polars2D const>;
 
 }  // namespace tuw
 #endif  //TUW_GEOMETRY__POLAR2D_HPP
