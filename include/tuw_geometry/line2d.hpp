@@ -7,7 +7,7 @@
 
 namespace tuw
 {
-class Line2D;   /// Prototype
+class Line2D;  /// Prototype
 using Line2DPtr = std::shared_ptr<Line2D>;
 using Line2DConstPtr = std::shared_ptr<Line2D const>;
 
@@ -125,6 +125,11 @@ public:
   **/
   cv::Vec<double, 2> normal() const;
   /**
+  * restuns the direction vector to a line
+  * @return vector
+  **/
+  cv::Vec<double, 2> direction() const;
+  /**
   * constructor to create a line from points
   * @param x0
   * @param y0
@@ -163,5 +168,5 @@ public:
 using Lines2D = std::vector<Line2D>;
 using Lines2DPtr = std::shared_ptr<Lines2D>;
 using Lines2DConstPtr = std::shared_ptr<Lines2D const>;
-}      // namespace tuw
+}  // namespace tuw
 #endif  // TUW_GEOMETRY__LINE2D_HPP

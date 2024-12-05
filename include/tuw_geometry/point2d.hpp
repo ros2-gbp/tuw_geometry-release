@@ -1,15 +1,14 @@
 #ifndef TUW_GEOMETRY__POINT2D_HPP
 #define TUW_GEOMETRY__POINT2D_HPP
 
-#include <tuw_geometry/utils.hpp>
-
 #include <memory>
 #include <opencv2/core/core.hpp>
+#include <tuw_geometry/utils.hpp>
 
 namespace tuw
 {
 
-class Point2D;   /// Prototype
+class Point2D;  /// Prototype
 class Polar2D;
 using Point2DPtr = std::shared_ptr<Point2D>;
 using Point2DConstPtr = std::shared_ptr<Point2D const>;
@@ -165,9 +164,17 @@ public:
   cv::Vec<double, 2> vector() const;
   /**
      * returns the distance to an other point
+     * @param p
      * @return disance
      **/
   double distanceTo(const Point2D & p) const;
+  /**
+     * returns the distance to an other point
+     * @param x
+     * @param y
+     * @return disance
+     **/
+  double distanceTo(double x, double y) const;
   /**
      * returns a cv::Point_<double> reference
      * @return cv
@@ -178,6 +185,28 @@ public:
      * @return cv
      **/
   cv::Point_<double> & cv();
+  /**
+     * copy to cv::Point
+     * @param des
+     * @return cv::Point to des reference
+     **/
+  cv::Point & to(cv::Point & des) const;
+  /**
+     * copy to cv::Point
+     * @param des
+     * @return cv::Point to des reference
+     **/
+  cv::Point & to(cv::Point & des);
+  /**
+     * returns a cv::Point
+     * @return cv
+     **/
+  cv::Point p() const;
+  /**
+     * returns a cv::Point
+     * @return cv
+     **/
+  cv::Point p();
   /**
      * checks if a point is within a rectangle
      * @param x0 top left x

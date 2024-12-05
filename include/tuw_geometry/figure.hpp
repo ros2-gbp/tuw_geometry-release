@@ -1,14 +1,14 @@
 #ifndef TUW_GEOMETRY__FIGURE_HPP
 #define TUW_GEOMETRY__FIGURE_HPP
 #include <opencv2/core/core_c.h>
+
+#include <opencv2/core/core.hpp>
 #include <tuw_geometry/pose2d.hpp>
 #include <tuw_geometry/world_scoped_maps.hpp>
 
-#include <opencv2/core/core.hpp>
-
 namespace tuw
 {
-class Figure;   /// Prototype
+class Figure;  /// Prototype
 using FigurePtr = std::shared_ptr<Figure>;
 using FigureConstPtr = std::shared_ptr<Figure const>;
 
@@ -56,6 +56,10 @@ public:
     int width_pixel, int height_pixel, double min_y, double max_y, double min_x, double max_x,
     double rotation = 0, double grid_scale_x = -1, double grid_scale_y = -1,
     const std::string & background_image = std::string());
+
+  virtual void init(
+    int width_pixel, int height_pixel, cv::Matx33d Mw2m, double grid_scale_y, double grid_scale_x,
+    const std::string & background_image);
 
   /**
      * @return title of the window
