@@ -33,9 +33,8 @@
 #ifndef TUW_GEOMETRY__GRID_MAP_HPP
 #define TUW_GEOMETRY__GRID_MAP_HPP
 
-#include <tuw_geometry/world_scoped_maps.hpp>
-
 #include <memory>
+#include <tuw_geometry/world_scoped_maps.hpp>
 
 namespace tuw
 {
@@ -112,15 +111,9 @@ public:
     cv::Mat I(rows(), cols(), CV_8U, data_.ptr(0));
     cv::dilate(I, I, element);
   }
-  T & operator()(double x, double y)
-  {
-    return data_(w2m(x, y).cv());
-  }
+  T & operator()(double x, double y) {return data_(w2m(x, y).cv());}
   const T & operator()(double x, double y) const {return data_(w2m(x, y).cv());}
-  T & operator()(const Point2D & _world_coordinates)
-  {
-    return data_(w2m(_world_coordinates).cv());
-  }
+  T & operator()(const Point2D & _world_coordinates) {return data_(w2m(_world_coordinates).cv());}
   const T & operator()(const Point2D & _world_coordinates) const
   {
     return data_(w2m(_world_coordinates).cv());

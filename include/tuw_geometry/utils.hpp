@@ -114,7 +114,7 @@ void EulerYawToQuaternion(double yaw, Quaternion & q)
  * @see https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
  **/
 template<typename Quaternion>
-void EulerToQuaternion(double pitch, double roll, double yaw, const Quaternion & q)
+void EulerToQuaternion(double pitch, double roll, double yaw, Quaternion & q)
 {
   double cy = cos(yaw * 0.5);
   double sy = sin(yaw * 0.5);
@@ -171,7 +171,7 @@ double & QuaternionToPitch(const Quaternion & q, double & pitch)
   // pitch (y-axis rotation)
   double sinp = +2.0 * (q.w * q.y - q.z * q.x);
   if (fabs(sinp) >= 1) {
-    pitch = copysign(M_PI / 2, sinp);   // use 90 degrees if out of range
+    pitch = copysign(M_PI / 2, sinp);  // use 90 degrees if out of range
   } else {
     pitch = asin(sinp);
   }

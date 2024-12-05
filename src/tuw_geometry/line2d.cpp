@@ -9,7 +9,9 @@ Line2D::Line2D(const Line2D & l)
 Line2D::Line2D(cv::Vec<double, 3> & l, bool normalize)
 : cv::Vec<double, 3>(l)
 {
-  if (normalize) {this->normalize();}
+  if (normalize) {
+    this->normalize();
+  }
 }
 Line2D::Line2D(
   const double & x0, const double & y0, const double & x1, const double & y1, bool normalize)
@@ -48,12 +50,18 @@ Point2D Line2D::intersection(const Line2D & l) const
   return Point2D(h[0] / h[2], h[1] / h[2]);
 }
 cv::Vec<double, 2> Line2D::normal() const {return cv::Vec<double, 2>(this->val[0], this->val[1]);}
+cv::Vec<double, 2> Line2D::direction() const
+{
+  return cv::Vec<double, 2>(this->val[1], -this->val[0]);
+}
 Line2D & Line2D::set(
   const double & x0, const double & y0, const double & x1, const double & y1, bool normalize)
 {
   this->val[0] = y0 - y1, this->val[1] = x1 - x0,
   this->val[2] = x0 * y1 - y0 * x1;  /// cross product with homogenios vectors
-  if (normalize) {this->normalize();}
+  if (normalize) {
+    this->normalize();
+  }
   return *this;
 }
 Line2D & Line2D::set(const Point2D & p0, const Point2D & p1, bool normalize)
