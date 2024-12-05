@@ -22,6 +22,7 @@ add_library(${PROJECT_NAME} SHARED
   src/${PROJECT_NAME}/polar2d.cpp
   src/${PROJECT_NAME}/pose2d.cpp
   src/${PROJECT_NAME}/line2d.cpp
+  src/${PROJECT_NAME}/plane3d.cpp
   src/${PROJECT_NAME}/command2d.cpp
   src/${PROJECT_NAME}/linesegment2d.cpp
   src/${PROJECT_NAME}/linesegment2d_detector.cpp
@@ -30,7 +31,9 @@ add_library(${PROJECT_NAME} SHARED
   src/${PROJECT_NAME}/world_scoped_maps.cpp
   src/${PROJECT_NAME}/layered_maps.cpp
   src/${PROJECT_NAME}/layered_figure.cpp
+  src/${PROJECT_NAME}/map_handler.cpp
 )
+
 target_compile_features(tuw_geometry PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 target_include_directories(tuw_geometry PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -40,28 +43,15 @@ ament_target_dependencies(${PROJECT_NAME}
   rclcpp_components
   sensor_msgs
   std_msgs
-  OpenCV)
-
+  OpenCV
+)
 
   # Causes the visibility macros to use dllexport rather than dllimport,
 # which is appropriate when building the dll but not consuming it.
 target_compile_definitions(tuw_geometry PRIVATE "TUW_GEOMETRY_BUILDING_LIBRARY")
 
-add_executable(example_figure src/main_example_figure.cpp)
-target_include_directories(example_figure PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
-target_compile_features(example_figure PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
-target_link_libraries(example_figure
-  rclcpp::rclcpp
-  ${PROJECT_NAME}
-  ${sensor_msgs_TARGETS}
-  ${std_msgs_TARGETS}
-  ${OpenCV_LIBS})
+add_subdirectory(src/examples)
 
-install(TARGETS example_figure
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 install(
   DIRECTORY include/
@@ -90,6 +80,11 @@ if(BUILD_TESTING)
 
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+
+  install(
+    TARGETS test_geometry
+    DESTINATION lib/${PROJECT_NAME}
+  )
 endif()
 
 ament_export_include_directories(
@@ -100,6 +95,14 @@ ament_export_libraries(
 )
 ament_export_targets(
   export_${PROJECT_NAME}
+)
+
+ament_export_dependencies(
+  rclcpp
+  rclcpp_components
+  sensor_msgs
+  std_msgs
+  OpenCV
 )
 
 ament_package()

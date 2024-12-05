@@ -2,6 +2,53 @@
 Changelog for package tuw_geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.2 (2024-12-05)
+------------------
+* unittest fixed
+* reformatted
+* init map updated
+* origin struct removed
+* update on geo_handler
+* point update
+* direction vector on lines added
+* WorldFile class enhanced
+* GeographicLib from export_dependencies removed
+* Update ament_export_dependencies
+* spaces removed
+* formating fixed
+* uncrustify
+* minor
+* cv support enhanced
+* minor
+* geo handler added
+* map_handler added
+* map to utm added
+* WorldFile added
+* uncrustified
+* tests updated
+* Makefile added
+* doku added
+* codeformatierung fixed
+* geomap added
+* figure inti with matrix
+* export dependencies for sensor_msgs std_msgs OpenCV added
+* export dependencies for sensor_msgs std_msgs OpenCV added
+* coding fixed
+* reformated
+* warning in test removed
+* uncrustify
+* plan3d added
+* plan3d added
+* plan3d added
+* <test_depend>ament_cmake_cppcheck</test_depend> added
+* Contributors: Alexander Lampalzer, Markus Bader, markus
+
+0.1.1 (2023-06-25)
+------------------
+* docs updated
+* Doxyfile added
+* Contributors: Markus Bader
+
 0.0.9 (2023-05-15)
 ------------------
 * connand2d files added
